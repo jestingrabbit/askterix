@@ -1,0 +1,17 @@
+<% @questions.each do |q| %>
+
+  <a href="/questions/<%= q.id %>">
+    <div class="qi--question">
+      <span class="qi--question--title">
+        <%= q.title %>
+      </span>
+      <span class="qi--question--score">
+        <%= q.score %>
+      </span>
+      <span class="qi--question--created_at">
+        <%= q.created_at.strftime '%H:%M, %a %e %b `%y' %>
+      </span>
+    </div>
+  </a>
+
+<% end %>

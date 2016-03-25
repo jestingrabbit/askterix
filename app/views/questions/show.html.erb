@@ -1,0 +1,28 @@
+<h2 class="question--title"> <%= @question.title %> </h2>
+
+<%= render :partial => 'q_score' %>
+
+<article class="question--text">
+  <%= markdown @question.text %>
+</article>
+
+<div class="question--dates">
+
+  <% if @question.edited_at.present? %>
+    <p>
+      edited_at: <%= @question.edited_at.strftime '%l:%M%P, %A %e %B, %Y' %>
+    </p>
+  <% end %>
+
+  <p>
+    created_at: <%= @question.created_at.strftime '%l:%M%P, %A %e %B, %Y' %>
+  </p>
+
+  <p>
+    <%= link_to 'Edit', edit_question_path(@question.id) %>
+  </p>
+
+</div>
+
+
+and then the answers...
