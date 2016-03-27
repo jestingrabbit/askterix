@@ -6,6 +6,8 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find params[:id]
+    @answer = Answer.new
+    @answer.question_id = params[:id]
   end
 
   def new
@@ -13,9 +15,14 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    question = Question.create question_params
-    question.score = 0
-    redirect_to question
+    @question = Question.new question_params
+    @question.score = 1
+    @question.user = @current_user
+    if @question.save
+      redirect_to @question
+    else
+      render :new
+    end
   end
 
 
@@ -24,10 +31,13 @@ class QuestionsController < ApplicationController
   end
 
   def update
-    question = Question.update params[:id], question_params
-    question.edited_at = question.updated_at
-    question.save #feels kinda ugly, but it works
-    redirect_to question
+    @question = Question.update params[:id], question_params
+    @question.edited_at = question.updated_at
+    if @question.save
+      redirect_to question
+    else
+      render :edit
+    end
   end
 
   def destroy

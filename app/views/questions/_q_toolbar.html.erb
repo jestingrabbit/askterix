@@ -1,0 +1,8 @@
+
+<%= @question.score %>
+
+<% if  @current_user == @question.user %>
+  <p>
+    <%= link_to 'Edit', edit_question_path(@question.id) %>
+  </p>
+<% end %>

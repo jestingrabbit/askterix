@@ -1,0 +1,23 @@
+<%= form_for [@question, @answer] do |f| %>
+
+  <% if @answer.errors && @answer.errors[:user].any?%>
+    <p>
+      <%= @answer.errors[:user].join(', ') %>
+    </p>
+  <% end %>
+
+  <fieldset>
+    <%= f.label :text, 'Got an answer? Type it up!' %>
+    <%= f.text_area :text %>
+
+    <% if @answer.errors && @answer.errors[:text].any?%>
+      <span>
+        <%= @answer.errors[:text].join(', ') %>
+      </span>
+    <% end %>
+
+  </fieldset>
+
+  <%= f.submit  %>
+
+<% end %>

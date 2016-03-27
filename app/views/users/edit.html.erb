@@ -1,0 +1,60 @@
+<h1> Edit User </h1>
+
+<%= form_for @user do |f| %>
+  <p>
+    You're stuck with your username, sorry.
+  </p>
+  <fieldset>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+    <% if @user.errors.any? && @user.errors[:email].any?%>
+      <span>
+        <%= @user.errors[:email].join(', ') %>
+      </span>
+    <% end %>
+
+  </fieldset>
+   <!--<fieldset>
+    <%= f.label :password %>
+    <%= f.password_field :email %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :confirm_password %>
+    <%= f.password_field :confirm_password %>
+  </fieldset> -->
+  <fieldset>
+    <%= f.label :avatar %>
+    <%= f.text_field :avatar %>
+
+    <% if @user.errors && @user.errors[:avatar].any?%>
+      <span>
+        <%= @user.errors[:avatar].join(', ') %>
+      </span>
+    <% end %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.label :link %>
+    <%= f.url_field :link %>
+
+    <% if @user.errors && @user.errors[:link].any?%>
+      <span>
+        <%= @user.errors[:link].join(', ') %>
+      </span>
+    <% end %>
+  </fieldset>
+
+  <fieldset>
+    <%= f.label :bio %>
+    <%= f.text_area :bio %>
+
+    <% if @user.errors && @user.errors[:bio].any?%>
+      <span>
+        <%= @user.errors[:bio].join(', ') %>
+      </span>
+    <% end %>
+  </fieldset>
+
+  <%= f.submit %>
+
+<% end %>

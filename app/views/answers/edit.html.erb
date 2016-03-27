@@ -1,0 +1,9 @@
+<h2 class="question--title"> <%= @question.title %> </h2>
+
+<%= render :partial => 'q_toolbar' %>
+
+<article class="question--text">
+  <%= markdown @question.text %>
+</article>
+
+<%= render :partial => 'form' %>

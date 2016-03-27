@@ -1,0 +1,25 @@
+
+<% @answers.each do |answer| %>
+
+  <% @this_answer = answer %>
+
+  <%= render :partial => '/answers/a_toolbar' %>
+
+  <article class="answer--text">
+    <%= markdown answer.text %>
+  </article>
+
+  <div class="answer--dates">
+    <% if answer.edited_at.present? %>
+      <p>
+        edited_at: <%= answer.edited_at.strftime '%H:%M, %a %e %b `%y' %>
+      </p>
+    <% end %>
+    <p>
+      created_at: <%= answer.created_at.strftime '%H:%M, %a %e %b `%y' %>
+    </p>
+  </div>
+
+<% end %>
+
+<%= render :partial => '/answers/form' %>

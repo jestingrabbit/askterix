@@ -1,0 +1,23 @@
+<h3><%= @current_user.name %></h3>
+
+<% if @current_user.avatar.present? %>
+  <%= image_tag @current_user.avatar %>
+<% end %>
+
+<p>
+  email address: <%= @current_user.email %>
+</p>
+
+<% if @current_user.link.present? %>
+  <p>
+    link: <%= @current_user.link %>
+  </p>
+<% end %>
+
+<% if @current_user.bio.present? %>
+  <p>
+    link: <%= @current_user.bio %>
+  </p>
+<% end %>
+
+<%= link_to "Edit Profile?", users_edit_path(@current_user) %>

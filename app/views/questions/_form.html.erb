@@ -1,11 +1,30 @@
 <%= form_for @question do |f| %>
+
+  <% if @question.errors && @question.errors[:user].any?%>
+    <p>
+      <%= @user.errors[:user].join(', ') %>
+    </p>
+  <% end %>
+
   <fieldset>
     <%= f.label :title %>
     <%= f.text_field :title %>
+
+    <% if @question.errors && @question.errors[:title].any?%>
+      <span>
+        <%= @question.errors[:title].join(', ') %>
+      </span>
+    <% end %>
   </fieldset>
   <fieldset>
     <%= f.label :text %>
     <%= f.text_area :text %>
+
+    <% if @question.errors && @question.errors[:text].any?%>
+      <span>
+        <%= @question.errors[:text].join(', ') %>
+      </span>
+    <% end %>
   </fieldset>
   <fieldset>
     <%= f.submit %>
