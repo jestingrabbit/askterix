@@ -1,8 +1,18 @@
 
-<%= @question.score %>
+<span>
+  <%= @question.score %>
+</span>
 
 <% if  @current_user == @question.user %>
-  <p>
-    <%= link_to 'Edit', edit_question_path(@question.id) %>
-  </p>
+  <span>
+    &nbsp; <%= link_to 'Edit', edit_question_path(@question.id) %>
+  </span>
+  <% unless @question.answers.any? or @question.score > 2 %>
+    <span>
+      &nbsp; <%= link_to('Delete',
+                  @question,
+                  :method => 'delete',
+                  :data => {:confirm => 'Delete Your Answer?'}) %>
+    </span>
+  <% end %>
 <% end %>

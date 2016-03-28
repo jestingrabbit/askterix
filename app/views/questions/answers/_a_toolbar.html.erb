@@ -1,0 +1,18 @@
+<% answer = @this_answer %>
+
+<span>
+ <%= answer.score %>
+</span>
+
+<% if @current_user == answer.user %>
+  <span>
+    &nbsp; <%= link_to 'Edit', edit_question_answer_path(@question.id, answer.id) %>
+  </span>
+  <span>
+    &nbsp; <%= link_to('Delete',
+                question_answer_path(@question.id, answer.id),
+                :method => 'delete',
+                :data => {:confirm => 'Delete Your Answer?'}) %>
+  </span>
+
+<% end %>

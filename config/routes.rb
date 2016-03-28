@@ -15,14 +15,13 @@ Rails.application.routes.draw do
   root :to => 'questions#index'
 
   resources :questions do
-    resources :answers
+    resources :answers, :only => [:create, :update, :edit, :destroy], :controller => 'questions/answers'
   end
 
   get '/users/edit' => 'users#edit'
-  resources :users, :only => [:new, :create, :index, :update, :show]
+  resources :users, :only => [:new, :create, :edit, :update, :show]
 
   get '/signup' => 'users#new'
-
   get '/login' => 'session#new'
   post '/login' => 'session#create'
   delete '/login' => 'session#destroy'

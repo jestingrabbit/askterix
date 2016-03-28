@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :integer          not null, primary key
+#  password_digest :text
+#  name            :text
+#  email           :text
+#  avatar          :text
+#  link            :text
+#  bio             :text
+#  points          :integer
+#  hide_state      :integer
+#  admin           :integer
+#  created_at      :datetime
+#  updated_at      :datetime
+#
+
 class User < ActiveRecord::Base
   has_many :questions
   has_many :answers

@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @user.hide_state = 0
     @user.admin = 0
     if @user.save
-      redirect_to root_path
+      redirect_to login_path
     else
       render :new
     end
