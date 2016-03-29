@@ -9,14 +9,16 @@ class Questions::AnswersController < ApplicationController
     @answer.score = 1
     @answer.user= @current_user
     if @answer.save
-      redirect_to @answer.question
+      redirect_to @question
     else
       @question = Question.find params[:question_id]
+      @answers = @question.answers
       render '/questions/show'
     end
   end
 
-  def edit
+  def edit # @question and @answer are loaded by the before filter.
+    @answers = @question.answers
     render '/questions/show'
   end
 
@@ -25,7 +27,7 @@ class Questions::AnswersController < ApplicationController
     unless @answer.errors.any?
       @answer.edited_at = @answer.updated_at
       @answer.save
-      redirect_to @answer.question
+      redirect_to @question
     else
       render '/questions/show'
     end

@@ -17,9 +17,6 @@
   </p>
 </div>
 
- <!-- maybe shouldn't be in here, but whatever -->
-<% @answers = @question.answers %>
-
 <% if @answers.size > 0 %>
   <h3><%= pluralize(@answers.size, 'Answer')%></h3>
 <% else %>
