@@ -1,17 +1,30 @@
-<% @questions.each do |q| %>
+<div class="container qi">
 
-  <a href="/questions/<%= q.id %>">
-    <div class="qi--question">
-      <span class="qi--question--title">
-        <%= q.title %>
-      </span>
-      <span class="qi--question--score">
-        <%= q.score %>
-      </span>
-      <span class="qi--question--created_at">
-        <%= q.created_at.strftime '%H:%M, %a %e %b `%y' %>
-      </span>
-    </div>
-  </a>
+  <h1> Questions </h1>
 
-<% end %>
+  <% @questions.each do |q| %>
+
+    <a href="/questions/<%= q.id %>">
+      <div class="qi--question row">
+        <div class="col-xs-2">
+          <span class="qi--question--score">
+            <%= q.score %>
+          </span>
+
+        </div>
+
+        <div class="col-xs-10">
+          <span class="qi--question--title">
+            <%= q.title %>
+          </span>
+
+          <div class="qi--date-positioner">
+            <%= render :partial => '/layouts/verbed_by',
+                       :locals => {:verbed => "asked", :timeable => q, :unlinked => true} %>
+          </div>
+        </div>
+      </div>
+    </a>
+    <hr>
+  <% end %>
+</div>

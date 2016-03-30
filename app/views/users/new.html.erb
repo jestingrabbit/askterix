@@ -1,34 +1,37 @@
-<h1>Sign up!</h1>
 
-<%= form_for @user do |f| %>
+<div class="middle-form">
+  <h1 class="text-center form-heading">Sign up!</h1>
 
-  <% if @user.errors.any? %>
-    <ol>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li>
-          <%= msg %>
-        </li>
-      <% end %>
-    </ol>
-  <% end %>
-  <fieldset>
-    <%= f.label :name, 'Username (what other people will know you as on the site)' %>
-    <%= f.text_field :name, :required => true %>
-  </fieldset>
-  <fieldset>
-    <%= f.label :email %>
-    <%= f.email_field :email, :required => true %>
-  </fieldset>
-  <fieldset>
-    <%= f.label :password %>
-    <%= f.password_field :password, :required => true  %>
-  </fieldset>
-  <fieldset>
-    <%= f.label :password_confirmation%>
-    <%= f.password_field :password_confirmation, :required => true  %>
-  </fieldset>
-  <fieldset>
-    <%= f.submit 'Join us'  %>
-  </fieldset>
+  <%= form_for @user do |f| %>
+
+    <% if @user.errors.any? %>
+      <ol>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li>
+            <%= msg %>
+          </li>
+        <% end %>
+      </ol>
+    <% end %>
+    <fieldset>
+      <%= f.label :name, 'Username' %>
+      <%= f.text_field :name, :required => true, :class => "form-control" %>
+    </fieldset>
+    <fieldset>
+      <%= f.label :email %>
+      <%= f.email_field :email, :required => true, :class => "form-control" %>
+    </fieldset>
+    <fieldset>
+      <%= f.label :password %>
+      <%= f.password_field :password, :required => true, :class => "form-control"  %>
+    </fieldset>
+    <fieldset>
+      <%= f.label :password_confirmation%>
+      <%= f.password_field :password_confirmation, :required => true, :class => "form-control"  %>
+    </fieldset>
+    <div class="btn-wrapper">
+      <%= f.submit 'Join us', :class => "btn btn-primary btn-lg"  %>
+    </div>
+  </div>
 
 <% end %>

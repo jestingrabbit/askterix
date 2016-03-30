@@ -5,34 +5,57 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
 </head>
 <body>
+  <div class="container-fluid">
+    <header>
 
-  <nav>
+      <div class="site-title">
+         ¿@₴𝝹†ər¡☓‽
+      </div>
 
-    <%= link_to 'Home', root_path %>
+      <nav class="clearfix">
+        <ul class="nav-left">
+          <li>
+            <%= link_to 'Home', root_path %>
+          </li>
+          <% if @current_user.present? %>
+            <li>
+              <%= link_to 'New Question?', new_question_path %>
+            </li>
+          <% end %>
+        </ul>
 
-    <% if @current_user.present? %>
-      <!-- <% if @current_user.admin? %>
-        <%= link_to 'All Users', users_path %>
-      <% end %> -->
-    <%= link_to 'New Question?', new_question_path %>
-    <%= link_to "Profile", @current_user %>
-    <%= link_to "logout #{ @current_user.email }", login_path, :method => :delete%>
+        <ul class="nav-right">
+          <% if @current_user %>
+            <li>
+              <%= link_to "Profile", @current_user %>
+            </li>
+            <li>
+              <%= link_to "logout #{ @current_user.email }", login_path, :method => :delete%>
+            </li>
+          <% else  %>
+            <li>
+              <%= link_to "Sign up", signup_path %>
+            </li>
+            <li>
+              <%= link_to "Log in", login_path %>
+            </li>
+          <% end %>
+        </ul>
+      </nav>
+    </header>
 
-  <% else  %>
-    <%= link_to "Sign up", signup_path %>
-    <%= link_to "Log in", login_path %>
-  <% end %>
-</nav>
+    <% if flash[:error].present? %>
+    <h2 class="error">
+      <%= flash[:error] %>
+    </h2>
+    <% end %>
 
-<% if flash[:error].present? %>
-<h2 class="error">
-  <%= flash[:error] %>
-</h2>
-<% end %>
+    <%= yield %>
 
-<%= yield %>
-
+  </div>
 </body>
 </html>

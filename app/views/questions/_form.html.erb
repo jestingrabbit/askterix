@@ -1,3 +1,7 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+
 <%= form_for @question do |f| %>
 
   <% if @question.errors && @question.errors[:user].any?%>
@@ -6,9 +10,9 @@
     </p>
   <% end %>
 
-  <fieldset>
+  <fieldset class="unbordered">
     <%= f.label :title %>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, :class => "form-control" %>
 
     <% if @question.errors && @question.errors[:title].any?%>
       <span>
@@ -16,9 +20,9 @@
       </span>
     <% end %>
   </fieldset>
-  <fieldset>
+  <fieldset class="unbordered">
     <%= f.label :text %>
-    <%= f.text_area :text %>
+    <%= f.text_area :text, :class => "form-control", :rows => "6" %>
 
     <% if @question.errors && @question.errors[:text].any?%>
       <span>
@@ -26,7 +30,8 @@
       </span>
     <% end %>
   </fieldset>
-  <fieldset>
-    <%= f.submit %>
-  </fieldset>
+  <%= f.submit "Ask Your Question", :class => ["btn", "btn-primary", "btn-lg"]  %>
 <% end %>
+</div>
+</div>
+</div>

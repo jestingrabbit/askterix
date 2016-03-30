@@ -4,7 +4,7 @@ class SessionController < ApplicationController
 
   def create
     identifier = params[:identifier]
-    user = User.find_by :name => identifier || User.find_by :email => identifier
+    user = User.find_by(:name => identifier) || User.find_by(:email => identifier)
     if user.present? && user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect_to root_path

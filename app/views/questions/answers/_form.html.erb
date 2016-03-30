@@ -6,9 +6,9 @@
     </p>
   <% end %>
 
-  <fieldset>
-    <%= f.label :text, 'Got an answer? Type it up!' %>
-    <%= f.text_area :text %>
+  <fieldset class="unbordered">
+    <%= f.label :text, 'Your Answer' %>
+    <%= f.text_area :text, :class => "form-control", :rows => "6" %>
 
     <% if @answer.errors && @answer.errors[:text].any?%>
       <span>
@@ -18,6 +18,6 @@
 
   </fieldset>
 
-  <%= f.submit  %>
+  <%= f.submit 'Post Your Answer', :class => ["btn", "btn-primary", "btn-lg"]  %>
 
 <% end %>

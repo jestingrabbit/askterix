@@ -1,60 +1,62 @@
-<h1> Edit User </h1>
+<div class="middle-form">
+  <h1 class="text-center form-heading">Edit Profile</h1>
 
-<%= form_for @user do |f| %>
-  <p>
-    You're stuck with your username, sorry.
-  </p>
-  <fieldset>
-    <%= f.label :email %>
-    <%= f.email_field :email %>
-    <% if @user.errors.any? && @user.errors[:email].any?%>
-      <span>
-        <%= @user.errors[:email].join(', ') %>
-      </span>
-    <% end %>
+  <%= form_for @user do |f| %>
+    <fieldset>
+      <strong>You're stuck with your username, sorry.</strong>
+    </fieldset>
+    <fieldset>
+      <%= f.label :email %>
+      <%= f.email_field :email, :class => "form-control" %>
+      <% if @user.errors.any? && @user.errors[:email].any?%>
+        <span>
+          <%= @user.errors[:email].join(', ') %>
+        </span>
+      <% end %>
 
-  </fieldset>
-   <!--<fieldset>
-    <%= f.label :password %>
-    <%= f.password_field :email %>
-  </fieldset>
-  <fieldset>
-    <%= f.label :confirm_password %>
-    <%= f.password_field :confirm_password %>
-  </fieldset> -->
-  <fieldset>
-    <%= f.label :avatar %>
-    <%= f.text_field :avatar %>
+    </fieldset>
+     <!--<fieldset>
+      <%= f.label :password %>
+      <%= f.password_field :email %>
+    </fieldset>
+    <fieldset>
+      <%= f.label :confirm_password %>
+      <%= f.password_field :confirm_password %>
+    </fieldset> -->
+    <fieldset>
+      <%= f.label :avatar %>
+      <%= f.text_field :avatar, :class => "form-control" %>
 
-    <% if @user.errors && @user.errors[:avatar].any?%>
-      <span>
-        <%= @user.errors[:avatar].join(', ') %>
-      </span>
-    <% end %>
-  </fieldset>
+      <% if @user.errors && @user.errors[:avatar].any?%>
+        <span>
+          <%= @user.errors[:avatar].join(', ') %>
+        </span>
+      <% end %>
+    </fieldset>
 
-  <fieldset>
-    <%= f.label :link %>
-    <%= f.url_field :link %>
+    <fieldset>
+      <%= f.label :link %>
+      <%= f.url_field :link, :class => "form-control" %>
 
-    <% if @user.errors && @user.errors[:link].any?%>
-      <span>
-        <%= @user.errors[:link].join(', ') %>
-      </span>
-    <% end %>
-  </fieldset>
+      <% if @user.errors && @user.errors[:link].any?%>
+        <span>
+          <%= @user.errors[:link].join(', ') %>
+        </span>
+      <% end %>
+    </fieldset>
 
-  <fieldset>
-    <%= f.label :bio %>
-    <%= f.text_area :bio %>
+    <fieldset>
+      <%= f.label :bio %>
+      <%= f.text_area :bio, :class => "form-control", :rows => "4" %>
 
-    <% if @user.errors && @user.errors[:bio].any?%>
-      <span>
-        <%= @user.errors[:bio].join(', ') %>
-      </span>
-    <% end %>
-  </fieldset>
-
-  <%= f.submit %>
-
+      <% if @user.errors && @user.errors[:bio].any?%>
+        <span>
+          <%= @user.errors[:bio].join(', ') %>
+        </span>
+      <% end %>
+    </fieldset>
+    <div class="btn-wrapper">
+      <%= f.submit 'Save Changes', :class => "btn btn-primary btn-lg" %>
+    </div>
+</div>
 <% end %>

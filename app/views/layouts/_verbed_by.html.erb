@@ -1,0 +1,22 @@
+<!-- Needs locals
+verbed == a string, which is a verb,
+timeable has - user
+             - created_at
+             - edited_at, maybe
+ -->
+ <div class="question--dates small pull-right">
+  <span>
+     <%= verbed %> by
+     <% if unlinked %>
+       <%= timeable.user.name %>
+     <% else %>
+       <%= link_to timeable.user.name, timeable.user %>
+     <% end %>
+     at
+     <%= timeable.created_at.strftime '%l:%M%P, %e/%m/%Y' %><!--
+  --></span><% if timeable.edited_at.present? %><!--
+  --><span>,
+     edited at <%= timeable.edited_at.strftime '%l:%M%P, %e/%m/%Y' %>
+  </span>
+  <% end %>
+</div>

@@ -1,25 +1,37 @@
-<h2 class="question--title"> <%= @question.title %> </h2>
 
-<%= render :partial => '/questions/q_toolbar' %>
 
-<article class="question--text">
-  <%= markdown @question.text %>
-</article>
+<div class="col-xs-1"></div>
 
-<div class="question--dates">
-  <% if @question.edited_at.present? %>
-    <p>
-      edited_at: <%= @question.edited_at.strftime '%l:%M%P, %A %e %B, %Y' %>
-    </p>
+<div class="container col-xs-10">
+  <div class="question--show row clearfix">
+    <%= render :partial => 'questions/q_score'  %>
+    <div class="col-xs-10">
+      <div class="row">
+        <div class="col-xs-10">
+          <span class="question--title pull-left"> <%= @question.title %> </span>
+        </div>
+        <div class="col-xs-2 q--tools">
+          <%= render :partial => '/questions/q_toolbar' %>
+        </div>
+      </div>
+
+      <article class="question--text">
+        <%= markdown @question.text %>
+      </article>
+
+      <%= render :partial => '/layouts/verbed_by',
+                 :locals => {:verbed => "asked", :timeable => @question, :unlinked => false} %>
+    </div>
+  </div>
+
+  <% if @answers.size > 0 %>
+    <h3><%= pluralize(@answers.size, 'Answer')%></h3>
+  <% else %>
+    <h3>No Answers Yet</h3>
   <% end %>
-  <p>
-    created_at: <%= @question.created_at.strftime '%l:%M%P, %A %e %B, %Y' %>
-  </p>
+  <%= render :partial => '/questions/answers/index' %>
+
+
 </div>
 
-<% if @answers.size > 0 %>
-  <h3><%= pluralize(@answers.size, 'Answer')%></h3>
-<% else %>
-  <h3>No Answers Yet</h3>
-<% end %>
-<%= render :partial => '/questions/answers/index' %>
+<div class="col-xs-1"></div>

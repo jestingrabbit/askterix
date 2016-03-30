@@ -5,13 +5,13 @@ class Questions::AnswersController < ApplicationController
 
   def create
     @answer = Answer.new answer_params
-    @answer.question_id = params[:question_id]
+    @question = Question.find params[:question_id]
+    @answer.question = @question
     @answer.score = 1
     @answer.user= @current_user
     if @answer.save
       redirect_to @question
     else
-      @question = Question.find params[:question_id]
       @answers = @question.answers
       render '/questions/show'
     end

@@ -1,31 +1,28 @@
 
 <% @answers.each do |answer| %>
-  <div class="answer">
-    <% if answer.id == @answer.id %>
-      <%= render :partial => '/questions/answers/form' %>
-    <% else %>
+  <div class="answer--show row clearfix">
+    <div class="col-xs-2"></div>
+    <div class="col-xs-10">
+      <% if answer.id == @answer.id %>
+        <%= render :partial => '/questions/answers/form' %>
+      <% else %>
+        <%= render :partial => '/questions/answers/a_toolbar', :locals => {:answer => answer} %>
 
-      <% @this_answer = answer %>
+        <article class="answer--text">
+          <%= markdown answer.text %>
+        </article>
 
-      <%= render :partial => '/questions/answers/a_toolbar' %>
+        <%= render :partial => '/layouts/verbed_by', :locals => {:verbed => "answered", :timeable => answer} %>
 
-      <article class="answer--text">
-        <%= markdown answer.text %>
-      </article>
 
-      <div class="answer--dates">
-        <% if answer.edited_at.present? %>
-          <p>
-            edited_at: <%= answer.edited_at.strftime '%H:%M, %a %e %b `%y' %>
-          </p>
-        <% end %>
-        <p>
-          created_at: <%= answer.created_at.strftime '%H:%M, %a %e %b `%y' %>
-        </p>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
+
+  <hr>
+
 <% end %>
+
 
 <% if @current_user && @answer.id.nil? %>
   <%= render :partial => '/questions/answers/form' %>
