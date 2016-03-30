@@ -12,7 +12,8 @@
           <%= markdown answer.text %>
         </article>
 
-        <%= render :partial => '/layouts/verbed_by', :locals => {:verbed => "answered", :timeable => answer} %>
+        <%= render :partial => '/layouts/verbed_by',
+                   :locals => {:verbed => "answered", :timeable => answer, :unlinked => false} %>
 
 
       <% end %>
