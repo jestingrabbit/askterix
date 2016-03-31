@@ -1,4 +1,4 @@
-[# askterix](https://askterix.herokuapp.com/)
+#[askterix](https://askterix.herokuapp.com/)
 ### Another stack exchange clone without credibility or user-base.
 
 Three restful crud models: User, Question, Answer. Two weird little things : QVote, AVote.
