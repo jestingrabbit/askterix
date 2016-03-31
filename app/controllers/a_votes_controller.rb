@@ -1,8 +1,10 @@
 class AVotesController < ApplicationController
   before_action do
     check_logged_in
-    get_question_and_answer
-    @a_vote = get_a_vote @answer
+    if @current_user
+      get_question_and_answer
+      @a_vote = get_a_vote @answer
+    end
   end
   # get ready for some sub optimal code.
   #That's been copy and pasted and modded from q_votes_controller.

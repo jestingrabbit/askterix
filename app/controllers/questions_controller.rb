@@ -11,9 +11,7 @@ class QuestionsController < ApplicationController
     @question = Question.find params[:id]
     @answer = Answer.new
     @answers = @question.answers
-    if @current_user
-      get_votes
-    end
+    get_votes
   end
 
   def new

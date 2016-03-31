@@ -24,11 +24,19 @@ class ApplicationController < ActionController::Base
   end
 
   def get_q_vote
-    @q_vote = QVote.find_by :key => get_key(@current_user.id, @question.id)
+    if @current_user
+      @q_vote = QVote.find_by :key => get_key(@current_user.id, @question.id)
+    else
+      @q_vote = nil
+    end
   end
 
   def get_a_votes
-    @a_votes = @question.answers.map {|a| get_a_vote a }
+    if @current_user
+      @a_votes = @question.answers.map {|a| get_a_vote a }
+    else
+      @a_votes = [(0..@question.answers.size)].fill(nil)
+    end
   end
 
   def get_a_vote(answer)
