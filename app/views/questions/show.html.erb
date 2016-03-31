@@ -1,37 +1,33 @@
-
-
 <div class="col-xs-1"></div>
+  <div class="container col-xs-10">
+    <div class="question--show row clearfix">
+      <%= render :partial => 'questions/q_score'  %>
+      <div class="col-xs-10">
+        <div class="clearfix">
+          <div class="pull-right">
+            <%= render :partial => '/questions/q_toolbar' %>
+          </div>
+          <span class="question--title"> <%= @question.title %> </span>
+        </div>
 
-<div class="container col-xs-10">
-  <div class="question--show row clearfix">
-    <%= render :partial => 'questions/q_score'  %>
-    <div class="col-xs-10">
-      <div class="row">
-        <div class="col-xs-10">
-          <span class="question--title pull-left"> <%= @question.title %> </span>
-        </div>
-        <div class="col-xs-2 q--tools">
-          <%= render :partial => '/questions/q_toolbar' %>
-        </div>
+        <article class="question--text">
+          <%= markdown @question.text %>
+        </article>
+
+        <%= render :partial => '/layouts/verbed_by',
+                   :locals => {:verbed => "asked", :timeable => @question, :unlinked => false} %>
       </div>
-
-      <article class="question--text">
-        <%= markdown @question.text %>
-      </article>
-
-      <%= render :partial => '/layouts/verbed_by',
-                 :locals => {:verbed => "asked", :timeable => @question, :unlinked => false} %>
     </div>
+
+    <hr class="double--top"><hr class="double--bottom">
+
+    <% if @answers.size > 0 %>
+      <h3><%= pluralize(@answers.size, 'Answer')%></h3>
+    <% else %>
+      <h3>No Answers Yet</h3>
+    <% end %>
+    <%= render :partial => '/questions/answers/index' %>
+
+
   </div>
-
-  <% if @answers.size > 0 %>
-    <h3><%= pluralize(@answers.size, 'Answer')%></h3>
-  <% else %>
-    <h3>No Answers Yet</h3>
-  <% end %>
-  <%= render :partial => '/questions/answers/index' %>
-
-
-</div>
-
 <div class="col-xs-1"></div>

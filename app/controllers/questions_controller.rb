@@ -11,6 +11,9 @@ class QuestionsController < ApplicationController
     @question = Question.find params[:id]
     @answer = Answer.new
     @answers = @question.answers
+    if @current_user
+      get_votes
+    end
   end
 
   def new
@@ -43,7 +46,7 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    @quetion.destroy
+    @question.destroy
     redirect_to questions
   end
 

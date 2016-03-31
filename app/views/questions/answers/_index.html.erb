@@ -1,14 +1,15 @@
 
-<% @answers.each do |answer| %>
+<% @answers.sort {|a, b| b.score <=> a.score }.each_with_index do |answer, i| %>
   <div class="answer--show row clearfix">
-    <div class="col-xs-2"></div>
+    <%= render :partial => 'questions/answers/a_score', :locals => {:a_vote => @a_votes[i], :answer => answer} %>
     <div class="col-xs-10">
       <% if answer.id == @answer.id %>
         <%= render :partial => '/questions/answers/form' %>
       <% else %>
-        <%= render :partial => '/questions/answers/a_toolbar', :locals => {:answer => answer} %>
-
-        <article class="answer--text">
+        <article class="answer--text clearfix">
+          <div class="pull-right">
+            <%= render :partial => '/questions/answers/a_toolbar', :locals => {:answer => answer} %>
+          </div>
           <%= markdown answer.text %>
         </article>
 

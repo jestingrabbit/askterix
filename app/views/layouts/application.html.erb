@@ -17,6 +17,7 @@
       </div>
 
       <nav class="clearfix">
+        <div class="container-fluid">
         <ul class="nav-left">
           <li>
             <%= link_to 'Home', root_path %>
@@ -45,17 +46,23 @@
             </li>
           <% end %>
         </ul>
+        </div>
       </nav>
     </header>
 
     <% if flash[:error].present? %>
-    <h2 class="error">
+    <h2 class="error text-center">
       <%= flash[:error] %>
     </h2>
     <% end %>
 
     <%= yield %>
 
+
   </div>
+  <footer>
+    <a href="/about">⨳</a>
+  </footer>
+
 </body>
 </html>

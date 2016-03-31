@@ -1,10 +1,23 @@
 
-<div class="q_score_bag col-xs-2">
+<div class="q_score_bag col-xs-2 text-center">
 
+  <% if @q_vote.nil? %>
+    <% up_class_string = "grey up" %>
+    <% down_class_string = "grey down" %>
+  <% elsif @q_vote.valency == 1 %>
+    <% up_class_string = "yellow up" %>
+    <% down_class_string = "grey down" %>
+  <% elsif @q_vote.valency == -1 %>
+    <% up_class_string = "grey up" %>
+    <% down_class_string = "yellow down" %>
+  <% end %>
 
-  <span>
+  <%= link_to '‽', question_voteup_path(@question.id), :class => up_class_string %>
+  </br>
+  <span class="blue score">
     <%= @question.score %>
   </span>
-
+  <br>
+  <%= link_to '¿', question_votedown_path(@question.id), :class => down_class_string %>
 
 </div>

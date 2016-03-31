@@ -30,6 +30,10 @@ a:hover {
   text-decoration: none;
 }
 
+a:focus {
+  text-decoration: none;
+}
+
 .site-title {
   font-size: 10rem;
   color: #FF9800;
@@ -40,11 +44,25 @@ a:hover {
   font-family: typewriter;
 }
 
+@media only screen and (max-width: 600px) {
+  .site-title {
+    font-size: 8rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .site-title {
+    font-size: 6rem;
+  }
+}
+
+/**************************************************************/
+
 nav {
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: bold;
   min-height: 4rem;
-  line-height: 4rem;
+  line-height: 3rem;
   background-color: #FF9800;
   margin: 0;
   padding: 0.5rem;
@@ -52,12 +70,12 @@ nav {
 }
 
 nav a {
-  color: #7E8AA2;
+  color: #263248;
   text-decoration: none;
 }
 
 nav a:hover {
-  color: #263248;
+  color: white;
   text-decoration: none;
 }
 
@@ -80,6 +98,7 @@ nav ul li {
   float: left;
 }
 
+/**************************************************************/
 
 div.middle-form {
   display: block;
@@ -122,13 +141,34 @@ div.middle-form {
    color: #FF9800;
  }
 
+ .btn-primary:active {
+   background-color: white;
+   color: #FF9800;
+ }
+
+ .btn-primary:focus {
+   background-color: #FF9800;
+   color: #7E8AA2;
+ }
+
+ .btn-primary:focus:active {
+   background-color: #FF9800;
+   color: #7E8AA2;
+ }
+
  .btn-wrapper {
    padding: 0rem 0.5rem 0.2rem;
  }
 
+/********************************************************/
+
+.qi--title {
+  font-size: 3rem;
+}
+
  div.qi--question {
-   height: 5rem;
-   font-size: 2rem;
+   /*height: 5rem;*/
+   font-size: 2.5rem;
    /*border: 2px solid #EEE;*/
    margin: 0;
    position: relative;
@@ -147,13 +187,51 @@ div.middle-form {
   bottom: -2rem;
 }*/
 
+/****************************************************/
+
 .q_score_bag {
+  font-size: 3rem;
+  font-weight: bold;
 }
 
+.q_score_bag p {
+  margin: 0;
+  line-height: 2.2rem;
+}
+
+.q_score_bag p.up {
+  margin-top: 0.5rem;
+}
+
+.q_score_bag p.score {
+  margin-top: 0.5rem
+}
+
+.q_score_bag p.up:hover , p.down:hover {
+  text-shadow: 0 0 5px #FF9800;
+}
+
+.q_score_bag .blue {
+  color: #263248;
+}
+.q_score_bag .grey {
+  color: #7E8AA2;
+}
+.q_score_bag .yellow {
+  color: #FF9800;
+}
+
+.q_score_bag .weird {
+  padding-right: 0.8rem
+
+}
+
+/****************************************************/
+
 .question--show {
-  border: 1px solid #263248;
+  /*border: 1px solid #263248;*/
   border-radius: 2rem;
-  box-shadow: 0 0 1px 1px #263248;
+  /*box-shadow: 0 0 1px 1px #263248;*/
   padding: 1rem;
   font-size: 2rem;
   margin-top:2rem;
@@ -194,12 +272,26 @@ div.middle-form {
 }
 
 hr {
-  color: #FF9800;
-  size: 10px;
+  margin: 2rem;
+}
+
+hr.double--top {
+  margin: 2rem auto 0.5rem;
+}
+
+hr.double--bottom {
+  margin: 0.5rem auto 2rem;
 }
 
 .unbordered {
   border: 0;
+}
+
+/*********************************************************/
+
+.marginal {
+  margin: 6rem 6rem;
+  padding: 3rem;
 }
 
 .question-form-heading {
@@ -207,4 +299,46 @@ hr {
   color: #263248;
   font-size: 4rem;
   margin: 3rem auto 0rem;
+}
+
+.user--show--heading {
+  font-size: 4rem;
+  font-weight: bold;
+  margin: 2rem 0 3rem;
+}
+
+.margin-0-auto-rounded {
+  display: block;
+  margin: 0 auto 2rem;
+  border-radius: 3rem;
+  max-width: 90%;
+}
+
+footer {
+  color: #97A5C2;
+  text-align: center;
+  font-size: 5rem;
+  font-weight: bold;
+  line-height: 15rem;
+}
+
+footer a {
+  color: #97A5C2;
+}
+
+footer a:hover {
+  color: #FF9800;
+}
+
+div.about {
+  font-size: 2rem;
+}
+
+div.about h3 {
+  font-size: 3rem;
+  color: #263248;
+}
+
+p {
+  text-indent: 3rem;
 }

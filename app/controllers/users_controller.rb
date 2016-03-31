@@ -1,7 +1,13 @@
 class UsersController < ApplicationController
 
+  before_filter :login_check, :except => [:new, :create]
+
   def new
     @user = User.new
+  end
+
+  def show
+    @user = User.find params[:id]
   end
 
   def create
@@ -42,5 +48,12 @@ class UsersController < ApplicationController
       :password,
       :password_confirmation
     )
+  end
+
+  def login_check
+    unless @current_user
+      flash[:error] = "You can't view that unless you're logged in"
+      redirect_to root_path
+    end
   end
 end

@@ -3,15 +3,16 @@
 
 <%= form_tag login_path do %>
   <fieldset>
-    <%= label_tag :identifier, 'either your username or email' %>
-    <%= text_field_tag :identifier, :html => {:class => "form-control"} %>
+    <%= label_tag :identifier, 'Username or Email' %>
+    <%= text_field_tag :identifier, '', :class => "form-control" %>
   </fieldset>
   <fieldset>
     <%= label_tag :password %>
-    <%= password_field_tag :password, :html => {:class => "form-control"} %>
+    <%= password_field_tag :password, '', :class => "form-control" %>
   </fieldset>
-
-  <%= submit_tag 'login', :html => {:class => "btn btn-primary btn-lg"}  %>
+  <div class="btn-wrapper">
+    <%= submit_tag 'login', :class => "btn btn-primary btn-lg"  %>
+  </div>
 </div>
 </div>
 <% end %>

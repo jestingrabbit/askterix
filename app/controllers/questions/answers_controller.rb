@@ -2,6 +2,7 @@ class Questions::AnswersController < ApplicationController
 
   before_filter :answer_ownership, :except => :create
   before_filter :check_logged_in, :only => :create
+  after_action :get_q_vote, :except => [:destroy]
 
   def create
     @answer = Answer.new answer_params
@@ -12,13 +13,13 @@ class Questions::AnswersController < ApplicationController
     if @answer.save
       redirect_to @question
     else
-      @answers = @question.answers
+      before_render
       render '/questions/show'
     end
   end
 
   def edit # @question and @answer are loaded by the before filter.
-    @answers = @question.answers
+    before_render
     render '/questions/show'
   end
 
@@ -27,8 +28,10 @@ class Questions::AnswersController < ApplicationController
     unless @answer.errors.any?
       @answer.edited_at = @answer.updated_at
       @answer.save
+      before_render
       redirect_to @question
     else
+      before_render
       render '/questions/show'
     end
   end
@@ -57,4 +60,10 @@ class Questions::AnswersController < ApplicationController
     end
   end
 
+  def before_render #if anyone can explain to me why this isn't in rails, you can go fuck yourself.
+    # and yes, I know about the gem, thankyou. I'm doing this at fucking 2am on friday and don't
+    # want a deploy issue.
+    @answers = @question.answers
+    get_votes
+  end
 end

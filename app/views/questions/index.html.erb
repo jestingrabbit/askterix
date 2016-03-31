@@ -1,15 +1,15 @@
 <div class="container qi">
 
-  <h1> Questions </h1>
+  <h1 class="qi--title"> Questions </h1>
 
-  <% @questions.each do |q| %>
+  <% @questions.sort {|a, b| b.score <=> a.score }.each do |q| %>
 
     <a href="/questions/<%= q.id %>">
       <div class="qi--question row">
-        <div class="col-xs-2">
-          <span class="qi--question--score">
+        <div class="col-xs-2 q_score_bag text-center">
+          <p class="blue score">
             <%= q.score %>
-          </span>
+          </p>
 
         </div>
 
@@ -18,13 +18,16 @@
             <%= q.title %>
           </span>
 
-          <div class="qi--date-positioner">
-            <%= render :partial => '/layouts/verbed_by',
-                       :locals => {:verbed => "asked", :timeable => q, :unlinked => true} %>
-          </div>
         </div>
+        <div class="qi--date-positioner">
+          <%= render :partial => '/layouts/verbed_by',
+                     :locals => {:verbed => "asked", :timeable => q, :unlinked => true} %>
+        </div>
+
+
       </div>
     </a>
     <hr>
+
   <% end %>
 </div>

@@ -14,8 +14,15 @@
 Rails.application.routes.draw do
   root :to => 'questions#index'
 
+  get '/about' => 'pages#about'
+
   resources :questions do
-    resources :answers, :only => [:create, :update, :edit, :destroy], :controller => 'questions/answers'
+    resources :answers, :only => [:create, :update, :edit, :destroy], :controller => 'questions/answers' do
+      get '/voteup' => 'a_votes#up'
+      get '/votedown' => 'a_votes#down'
+    end
+    get '/voteup' => 'q_votes#up'
+    get '/votedown' => 'q_votes#down'
   end
 
   get '/users/edit' => 'users#edit'
