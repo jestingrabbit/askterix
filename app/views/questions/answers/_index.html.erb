@@ -1,7 +1,10 @@
 
-<% @answers.sort {|a, b| b.score <=> a.score }.each_with_index do |answer, i| %>
+
+<% @answers.zip(@a_votes).to_a.sort {|a, b| b[0].score <=> a[0].score }.each_with_index do |answer_vote| %>
+<% answer = answer_vote[0] %>
+<% a_vote = answer_vote[1] %>
   <div class="answer--show row clearfix">
-    <%= render :partial => 'questions/answers/a_score', :locals => {:a_vote => @a_votes[i], :answer => answer} %>
+    <%= render :partial => 'questions/answers/a_score', :locals => {:a_vote => a_vote, :answer => answer} %>
     <div class="col-xs-10">
       <% if answer.id == @answer.id %>
         <%= render :partial => '/questions/answers/form' %>
